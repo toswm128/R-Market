@@ -12,9 +12,32 @@ function App() {
   };
 
   const submitTodo = () => {
-    setTodoList([...todoList, todoText]);
+    setTodoList([
+      ...todoList,
+      {
+        id: todoList.length + 1,
+        isChecked: false,
+        text: todoText,
+        deletedIndex: null,
+      },
+    ]);
     setTodoText("");
-    console.log(todoList);
+  };
+
+  const checkTodo = (selectedId) => {
+    setTodoList(
+      todoList.map((todo) =>
+        todo.id === selectedId ? { ...todo, isChecked: !todo.isChecked } : todo
+      )
+    );
+  };
+
+  const deleteTodo = (selectedId) => {
+    setTodoList(
+      todoList.map((todo) =>
+        todo.id === selectedId ? { ...todo, deletedIndex: selectedId } : todo
+      )
+    );
   };
 
   return (
@@ -24,7 +47,7 @@ function App() {
         onChageTodoText={onChageTodoText}
         submitTodo={submitTodo}
       />
-      <List todoList={todoList} />
+      <List todoList={todoList} checkTodo={checkTodo} deleteTodo={deleteTodo} />
     </>
   );
 }

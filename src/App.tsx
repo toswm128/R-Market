@@ -1,8 +1,10 @@
 import React from "react";
 import { DEFAULT_MAX_VERSION } from "tls";
+import SearchForm from "./components/common/SearchForm";
+import "styles/global.css";
 
 function App() {
-  return <div>a</div>;
+  return <SearchForm />;
 }
 
 export default App;

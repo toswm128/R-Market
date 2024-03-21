@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import searchIcon from "assets/icon/search-icon.svg";
+import searchIcon from "assets/icon/search_icon.svg";
 import { SearchFormItem } from "./StyledSearchForm";
 
 const SearchForm = () => {

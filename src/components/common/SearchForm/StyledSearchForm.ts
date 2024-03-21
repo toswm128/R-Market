@@ -4,14 +4,14 @@ export const SearchFormItem = {
   Container: styled.form`
     width: 100%;
     display: flex;
-    border: 2px solid #2a5705;
+    border: 2px solid black;
     padding: 4px;
     border-radius: 10px;
     box-shadow: 5px 4px 10px 0px rgba(42, 87, 5, 0.2);
     transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
 
     &:focus-within {
-      border-color: #6a9645;
       box-shadow: 5px 4px 10px 0px rgba(42, 87, 5, 0.4);
     }
 

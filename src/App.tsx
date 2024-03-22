@@ -1,14 +1,17 @@
-import React from "react";
-import { DEFAULT_MAX_VERSION } from "tls";
-import Header from "./components/common/Header/Header";
-import SearchForm from "./components/common/SearchForm";
 import "styles/global.css";
 import Router from "router/Router";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient({});
 
 function App() {
   return (
     <>
-      <Router />
+      <QueryClientProvider client={queryClient}>
+        <Router />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+      </QueryClientProvider>
     </>
   );
 }

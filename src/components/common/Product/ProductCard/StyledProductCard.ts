@@ -2,17 +2,21 @@ import styled from "@emotion/styled";
 
 const GoodsCardItem = {
   Container: styled.div`
-    padding: 8px;
-    width: 300px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    .card_wrap {
+      padding: 8px;
+      width: 300px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      color: black;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
 
-    &:hover {
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+      &:hover {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+      }
     }
 
     img {

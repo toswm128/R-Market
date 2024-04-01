@@ -23,20 +23,18 @@ const ImageSlider = ({ imageList }: ImageSliderType) => {
   };
 
   return (
-    <div>
-      <ImageSliderItem.Container>
-        <ImageSliderItem.Slider ref={sliderRef}>
-          {imageList.map((url, key) => (
-            <img src={url} key={key} alt="" />
-          ))}
-        </ImageSliderItem.Slider>
-        <div className="button_wrap">
-          <button onClick={() => handlePrevSlide()}>＜</button>
+    <ImageSliderItem.Container>
+      <ImageSliderItem.Slider ref={sliderRef}>
+        {imageList.map((url, key) => (
+          <img src={url} key={key} alt="" />
+        ))}
+      </ImageSliderItem.Slider>
+      <div className="button_wrap">
+        <button onClick={() => handlePrevSlide()}>＜</button>
 
-          <button onClick={() => handleNextSlide()}>＞</button>
-        </div>
-      </ImageSliderItem.Container>
-    </div>
+        <button onClick={() => handleNextSlide()}>＞</button>
+      </div>
+    </ImageSliderItem.Container>
   );
 };
 

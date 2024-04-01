@@ -43,9 +43,9 @@ const ImageSliderItem = {
     img {
       scroll-snap-align: start;
 
-      min-width: 100vw;
+      min-width: 100%;
       object-fit: contain;
-      flex-basis: 100vw;
+      flex-basis: 100%;
     }
   `,
 };

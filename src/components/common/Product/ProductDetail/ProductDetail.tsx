@@ -1,6 +1,7 @@
 import useProductDetail from "hooks/queries/useProductDetail";
 import ProductDetailItem from "./StyledProductDetail";
 import { useEffect, useRef } from "react";
+import ImageSlider from "components/common/ImageSlider";
 
 interface ProductDetailType {
   productId: string;
@@ -8,29 +9,12 @@ interface ProductDetailType {
 
 const ProductDetail = ({ productId }: ProductDetailType) => {
   const { data } = useProductDetail(productId);
-  const sliderRef = useRef<any>();
-
-  const handlePrevSlide = () => {
-    sliderRef.current?.scrollBy({
-      left: -100,
-      behavior: "smooth",
-    });
-  };
-  const handleNextSlide = () => {
-    sliderRef.current?.scrollBy({ left: 100, behavior: "smooth" });
-  };
 
   return (
     <ProductDetailItem.Container>
       {data && (
         <>
-          <button onClick={() => handlePrevSlide()}>뒤로</button>
-          <button onClick={() => handleNextSlide()}>앞으로</button>
-          <ProductDetailItem.ImageSlider ref={sliderRef}>
-            {data.images.map((image, key) => (
-              <img key={key} src={image} alt="" />
-            ))}
-          </ProductDetailItem.ImageSlider>
+          <ImageSlider imageList={data.images} />
           <div>{data.title}</div>
           <div>{data.brand}</div>
           <div>{data.category}</div>

@@ -8,10 +8,12 @@ const ProductDetailItem = {
   `,
   Main: styled.main`
     width: 100%;
+    max-height: 500px;
     box-sizing: border-box;
     padding: 8px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     gap: 16px;
   `,
   ProductInfo: styled.section`

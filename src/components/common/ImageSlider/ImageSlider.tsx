@@ -29,11 +29,13 @@ const ImageSlider = ({ imageList }: ImageSliderType) => {
           <img src={url} key={key} alt="" />
         ))}
       </ImageSliderItem.Slider>
-      <div className="button_wrap">
-        <button onClick={() => handlePrevSlide()}>＜</button>
+      {imageList.length > 1 && (
+        <div className="button_wrap">
+          <button onClick={() => handlePrevSlide()}>＜</button>
 
-        <button onClick={() => handleNextSlide()}>＞</button>
-      </div>
+          <button onClick={() => handleNextSlide()}>＞</button>
+        </div>
+      )}
     </ImageSliderItem.Container>
   );
 };

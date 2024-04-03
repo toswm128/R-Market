@@ -17,6 +17,11 @@ export const HeaderItem = {
       justify-content: center;
       align-items: center;
       cursor: pointer;
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
       gap: 2px;
     }
 

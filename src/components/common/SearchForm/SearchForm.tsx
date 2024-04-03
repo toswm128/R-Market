@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import searchIcon from "assets/icon/search_icon.svg";
 import { SearchFormItem } from "./StyledSearchForm";
+import useHeaderSearch from "hooks/useHeaderSearch";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useHeaderSearch("");
+  const navigate = useNavigate();
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    searchText && navigate("/search/" + searchText);
   };
 
   const handleChangeSearchText = (e: React.ChangeEvent<HTMLInputElement>) => {

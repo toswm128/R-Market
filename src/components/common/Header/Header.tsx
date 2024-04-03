@@ -3,12 +3,15 @@ import SearchForm from "../SearchForm";
 import { HeaderItem } from "./StyledHeader";
 import cartIcon from "assets/icon/cart_icon.svg";
 import listCheck from "assets/icon/list_check_icon.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <HeaderItem.Container>
       <div className="title">
-        <div className="item_wrapper">RMarket</div>
+        <div className="item_wrapper">
+          <Link to={"/"}>RMarket</Link>
+        </div>
       </div>
       <div className="search_form">
         <SearchForm />

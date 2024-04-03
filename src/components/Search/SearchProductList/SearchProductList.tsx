@@ -9,7 +9,21 @@ const SearchProductList = () => {
 
   return (
     <SearchProductListItem.Container>
-      <ProductCardList products={data?.products} />
+      {data?.products.length !== 0 ? (
+        <SearchProductListItem.ListWrapper>
+          <div className="search_text">
+            "<b>{productText}</b>
+            "에 대한 검색결과
+          </div>
+          <ProductCardList products={data?.products} />
+        </SearchProductListItem.ListWrapper>
+      ) : (
+        <SearchProductListItem.Error>
+          <div>
+            검색하신 "{productText}"에 대해 검색한 결과를 찾을 수 없습니다.
+          </div>
+        </SearchProductListItem.Error>
+      )}
     </SearchProductListItem.Container>
   );
 };

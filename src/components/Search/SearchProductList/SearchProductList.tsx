@@ -1,21 +1,30 @@
 import SearchProductListItem from "./StyledSearchProductList";
 import ProductCardList from "components/common/Product/ProductCardList/ProductCardList";
 import useProductSearch from "hooks/queries/useProductSearch";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { useParams } from "react-router-dom";
 
 const SearchProductList = () => {
   const productText = useParams().text;
-  const { data } = useProductSearch(productText || "");
+  const { data, fetchNextPage } = useProductSearch(productText || "");
+
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    inView && fetchNextPage();
+  }, [inView]);
 
   return (
     <SearchProductListItem.Container>
-      {data?.products.length !== 0 ? (
+      {data?.pages.length !== 0 ? (
         <SearchProductListItem.ListWrapper>
           <div className="search_text">
             "<b>{productText}</b>
             "에 대한 검색결과
           </div>
-          {/* <ProductCardList products={data?.products} /> */}
+          <ProductCardList pages={data?.pages} />
+          <div ref={ref}></div>
         </SearchProductListItem.ListWrapper>
       ) : (
         <SearchProductListItem.Error>

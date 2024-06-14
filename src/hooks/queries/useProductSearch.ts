@@ -1,17 +1,26 @@
 import { PRODUCT_SEARCH } from "constants/queries";
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { ProductListDataType } from "types/product";
 import { customedAxios } from "util/customAxios";
 
-const getProductSearch = (searchedText: string) =>
-  customedAxios.get<ProductListDataType>("product/search?q=" + searchedText);
+const getProductSearch = async (searchedText: string, pageParam: number) => {
+  const limit = 30;
+  const skip = pageParam * limit;
+  const { data } = await customedAxios.get<ProductListDataType>(
+    `product/search?q=${searchedText}&limit=${limit}&skip=${skip}`
+  );
+  return { data, isLast: skip >= data.total, nextPage: pageParam + 1 };
+};
 
 export default function useProductSearch(searchedText: string) {
-  return useQuery(
+  return useInfiniteQuery(
     [PRODUCT_SEARCH, searchedText],
-    () => getProductSearch(searchedText),
+    ({ pageParam = 0 }) => getProductSearch(searchedText, pageParam),
     {
-      select: (data) => data.data,
+      getNextPageParam: (lastPage) => {
+        if (!lastPage.isLast) return lastPage.nextPage;
+        return undefined;
+      },
     }
   );
 }

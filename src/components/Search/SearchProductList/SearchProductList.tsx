@@ -15,7 +15,7 @@ const SearchProductList = () => {
             "<b>{productText}</b>
             "에 대한 검색결과
           </div>
-          <ProductCardList products={data?.products} />
+          {/* <ProductCardList products={data?.products} /> */}
         </SearchProductListItem.ListWrapper>
       ) : (
         <SearchProductListItem.Error>

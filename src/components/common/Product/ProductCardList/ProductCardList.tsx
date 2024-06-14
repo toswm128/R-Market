@@ -1,17 +1,23 @@
 import GoodsCard from "components/common/Product/ProductCard/ProductCard";
 import ProductCardListItem from "./StyledProductCardLIst";
-import { ProductType } from "types/product";
+import { ProductListDataType } from "types/product";
 
 interface ProductCardListProps {
-  products?: ProductType[];
+  pages?: {
+    data: ProductListDataType;
+    isLast: boolean;
+    nextPage: number;
+  }[];
 }
 
-const ProductCardList = ({ products }: ProductCardListProps) => {
+const ProductCardList = ({ pages }: ProductCardListProps) => {
   return (
     <ProductCardListItem.Container>
-      {products?.map((product) => (
-        <GoodsCard product={product} key={product.id} />
-      ))}
+      {pages?.map(({ data }) =>
+        data.products.map((product) => (
+          <GoodsCard product={product} key={product.id} />
+        ))
+      )}
     </ProductCardListItem.Container>
   );
 };

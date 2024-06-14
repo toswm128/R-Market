@@ -14,10 +14,8 @@ const MainProductList = () => {
 
   return (
     <MainProductListItem.Container>
-      {data &&
-        data.pages.map((page, key) => (
-          <ProductCardList key={key} products={page.data.products} />
-        ))}
+      {data && <ProductCardList pages={data?.pages} />}
+
       <div ref={ref}></div>
     </MainProductListItem.Container>
   );

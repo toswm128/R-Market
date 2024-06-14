@@ -9,7 +9,7 @@ interface GoodsCardProps {
 const GoodsCard = ({ product }: GoodsCardProps) => {
   return (
     <GoodsCardItem.Container>
-      <Link className="card_wrap" to={"product/" + product.id}>
+      <Link className="card_wrap" to={"/product/" + product.id}>
         <div>
           <img src={product.thumbnail} alt="" />
           <GoodsCardItem.Title>{product.title}</GoodsCardItem.Title>
